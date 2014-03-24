@@ -1,4 +1,52 @@
+<section class="container">
+  <nav>
+    <a href="#" class="twitter">Twitter</a>
+    <a href="#" class="pins">Pins</a>
+    <a href="#" class="instagram">Instagram</a>
+  </nav>
+
+  <article class="twitter-box">
+    
+  </article>
+
+  <article class="instagram">
+    
+  </article>
+
+  <article class="pinterest">
+    
+  </article>
+
+</section>
+
+
+<script>
+$('.twitter-box').hide();
+$('.twitter').on('click', function(){
+  $('.twitter-box').show();
+  $.ajax({
+    url:'/api/tweets',
+    dataType: 'json',
+    type: 'get'
+  }).done(function(data){
+    console.log(data);
+  })
+})
+
+
+$('.pins').on('click', function(){
+  $.ajax({
+    url:'api/pins',
+    dataType: 'json',
+    type: 'get'
+  }).done(function(data){
+    console.log(data);
+  })
+})
+</script>
+
+
 <h1>home page</h1>
-<%= @user.twitter %>
+<%#= @user.twitter %>
 <h2>twitter info</h2>
 <%= @data.inspect %>

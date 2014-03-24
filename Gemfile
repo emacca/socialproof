@@ -45,6 +45,8 @@ end
 
 gem 'twitter', '~> 5.0.0.rc.1'
 
+#rss feed 
+gem 'simple-rss'
 
 group :development, :test do
   # testing 

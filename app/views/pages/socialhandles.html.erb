@@ -1,0 +1,29 @@
+<%= form_for(@users) do |f| %>
+  <% if @users.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@users.errors.count, "error") %> prohibited this flight from being saved:</h2>
+
+      <ul>
+      <% @users.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :twitter %><br>
+    <%= f.text_field :twitter, :class=>"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :instagram %><br>
+    <%= f.text_field :instagram, :class=>"form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :pinterest %><br>
+    <%= f.text_field :pinterest, :class=>"form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit :class=> "btn btn-warning" %>
+  </div>
+<% end %>

@@ -1,4 +1,13 @@
 Socialproof::Application.routes.draw do
+  get "users/socialnew"
+  get "users/socialcreate"
+  get "users/socialupdate"
+  get "users/new"
+  get "users/create"
+  get "users/update"
+  get "user/new"
+  get "user/create"
+  get "user/update"
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -7,7 +16,7 @@ Socialproof::Application.routes.draw do
   root 'pages#index'
 
   # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+   get '/socialhandles' => 'pages#socialhandles'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

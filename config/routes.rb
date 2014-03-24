@@ -7,7 +7,8 @@ Socialproof::Application.routes.draw do
   root 'pages#index'
 
   # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+   get '/sociallinks' => 'users#sociallinks'
+   patch '/socialupdate' => 'users#socialupdate'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

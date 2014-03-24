@@ -43,6 +43,8 @@ group :production do
   
 end
 
+gem 'twitter', '~> 5.0.0.rc.1'
+
 
 group :development, :test do
   # testing 

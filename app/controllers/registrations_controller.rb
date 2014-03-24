@@ -2,7 +2,7 @@ class RegistrationsController < Devise::RegistrationsController
   protected
 
   def after_sign_up_path_for(resource)
-    socialhandles_path
+    sociallinks_path
   end
 
 end

@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if resource.sign_in_count == 1
-      socialhandles_path
+      sociallinks_path
     else
       root_path
     end

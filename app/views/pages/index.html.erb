@@ -1,4 +1,9 @@
 <h1>home page</h1>
 <%= @user.twitter %>
+
 <h2>twitter info</h2>
-<%= @data.inspect %>
+<% @clientTimeline.each do |t| %>
+<%= t[:text] %>
+<%= t[:created_at] %>
+</br></br>
+<% end %>

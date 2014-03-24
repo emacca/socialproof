@@ -10,7 +10,8 @@ class PagesController < ActionController::Base
       config.access_token_secret = "56Jy1uA01qJLsOyTUOmgpF9AQKOEtG4yVkyj4WFB2NCIT"
     end
 
-    @data = client.user_timeline("#{@user.twitter}")
+    @clientTimeline = client.user_timeline("#{@user.twitter}")
+    #@data = @clientTimeline.first
 
   end
 

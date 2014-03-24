@@ -38,6 +38,26 @@ gem 'devise'
 #bootstrap
 gem 'bootstrap-sass'
 
+group :production do
+  gem 'rails_12factor', '0.0.2'
+  
+end
+
+
+group :development, :test do
+  # testing 
+  gem 'rspec-rails'
+  # Stop Versioning Rails Secret Tokens
+  # https://gist.github.com/cjolly/6265302
+  gem 'dotenv-rails'
+
+  # gem 'mocha'
+  gem 'shoulda'
+  gem 'simplecov'
+end
+
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 

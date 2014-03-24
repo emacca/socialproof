@@ -195,6 +195,7 @@ DEPENDENCIES
   instagram
   jbuilder (~> 1.2)
   jquery-rails
+  omniauth
   omniauth-twitter
   pg
   rails (= 4.0.2)

@@ -12,6 +12,8 @@ Socialproof::Application.routes.draw do
    get '/sociallinks' => 'users#sociallinks'
    patch '/socialupdate' => 'users#socialupdate'
 
+
+
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

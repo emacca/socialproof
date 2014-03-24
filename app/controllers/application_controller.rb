@@ -13,4 +13,14 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
+
+
+  protected
+  def configure_permitted_parameters
+    custom_fields = %i(twitter_login provider uid kind image name)
+    devise_parameter_sanitizer.for(:sign_up) << custom_fields
+    devise_parameter_sanitizer.for(:account_update) << custom_fields
+  end
+
+
 end

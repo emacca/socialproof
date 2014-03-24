@@ -12,6 +12,15 @@
   <div><%= f.label :password_confirmation %><br />
   <%= f.password_field :password_confirmation %></div>
 
+   <div><%= f.label :twitter , 'twitter handle' %><br />
+  <%= f.text_field :twitter %></div>
+
+   <div><%= f.label :instagram, 'instagram username' %><br />
+  <%= f.text_field :instagram %></div>
+
+   <div><%= f.label :pinterest, 'pinterest username' %><br />
+  <%= f.text_field :pinterest %></div>
+
   <div><%= f.submit "Sign up" %></div>
 <% end %>
 

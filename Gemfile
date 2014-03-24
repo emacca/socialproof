@@ -45,6 +45,7 @@ end
 
 gem 'twitter', '~> 5.0.0.rc.1'
 
+gem 'instagram'
 
 group :development, :test do
   # testing 

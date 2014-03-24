@@ -1,8 +1,14 @@
-class PagesController < ActionController::Base
-  def index
-    @user = current_user
+require 'simple-rss'
+require 'open-uri'
 
-    @users = User.all
+class PagesController < ApplicationController
+
+
+  def index
+    # @data = @client.user_timeline(current_user.twitter)
+  end
+
+  def tweets
     client = Twitter::REST::Client.new do |config|
       config.consumer_key = "bOwOoiqzjlE56CtThcYQ"
       config.consumer_secret = "1pd0CmGWsSZzxnidBgTjVmg5yUn7CwGBAyaYJnDdik"
@@ -10,8 +16,13 @@ class PagesController < ActionController::Base
       config.access_token_secret = "56Jy1uA01qJLsOyTUOmgpF9AQKOEtG4yVkyj4WFB2NCIT"
     end
 
-    @data = client.user_timeline("#{@user.twitter}")
+    @tweets = client.user_timeline(current_user.twitter)
+    render :json => @tweets
+  end
 
+  def pins
+    @rss = SimpleRSS.parse open("http://www.pinterest.com/#{current_user.pinterest}/feed.rss")
+    render :json => @rss
   end
 
 end

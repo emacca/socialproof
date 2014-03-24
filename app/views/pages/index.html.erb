@@ -36,7 +36,7 @@ $('.twitter').on('click', function(){
 
 $('.pins').on('click', function(){
   $.ajax({
-    url:'api/pins',
+    url:'/api/pins',
     dataType: 'json',
     type: 'get'
   }).done(function(data){
@@ -45,14 +45,3 @@ $('.pins').on('click', function(){
 })
 </script>
 
-
-<h1>home page</h1>
-
-<%= @user.twitter %>
-
-<h2>twitter info</h2>
-<% @clientTimeline.each do |t| %>
-<%= t[:text] %>
-<%= t[:created_at] %>
-</br></br>
-<% end %>

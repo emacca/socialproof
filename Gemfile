@@ -44,7 +44,7 @@ group :production do
 end
 
 gem 'twitter', '~> 5.0.0.rc.1'
-
+gem 'omniauth-twitter'
 
 gem 'instagram'
 

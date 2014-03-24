@@ -1,11 +1,12 @@
 require 'simple-rss'
 require 'open-uri'
+require 'instagram'
+
 
 class PagesController < ApplicationController
 
 
   def index
-    # @data = @client.user_timeline(current_user.twitter)
   end
 
   def tweets
@@ -16,7 +17,7 @@ class PagesController < ApplicationController
       config.access_token_secret = "56Jy1uA01qJLsOyTUOmgpF9AQKOEtG4yVkyj4WFB2NCIT"
     end
 
-    @tweets = client.user_timeline(current_user.twitter)
+    @tweets = client.home_timeline
     render :json => @tweets
   end
 
@@ -24,5 +25,7 @@ class PagesController < ApplicationController
     @rss = SimpleRSS.parse open("http://www.pinterest.com/#{current_user.pinterest}/feed.rss")
     render :json => @rss
   end
+
+
 
 end

@@ -1,6 +1,7 @@
 <section class="container">
   <nav>
-    <a href="#" class="twitter">Twitter</a>
+    <a href="/auth/twitter" class="twitter">Twitter</a>
+  <a href="#" class="twitterfeed">TweetFeed</a>
     <a href="#" class="pins">Pins</a>
     <a href="#" class="instagram">Instagram</a>
   </nav>
@@ -22,7 +23,7 @@
 
 <script>
 $('.twitter-box').hide();
-$('.twitter').on('click', function(){
+$('.twitterfeed').on('click', function(){
   $('.twitter-box').show();
   $.ajax({
     url:'/api/tweets',
@@ -34,19 +35,14 @@ $('.twitter').on('click', function(){
 })
 
 
-$('.pins').on('click', function(){
-  $.ajax({
-    url:'api/pins',
-    dataType: 'json',
-    type: 'get'
-  }).done(function(data){
-    console.log(data);
-  })
-})
+// $('.pins').on('click', function(){
+//   $.ajax({
+//     url:'api/pins',
+//     dataType: 'json',
+//     type: 'get'
+//   }).done(function(data){
+//     console.log(data);
+//   })
+// })
 </script>
 
-
-<h1>home page</h1>
-<%#= @user.twitter %>
-<h2>twitter info</h2>
-<%= @data.inspect %>

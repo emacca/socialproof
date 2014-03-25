@@ -17,6 +17,18 @@ class UsersController < ApplicationController
     end  
   end
 
+  def set_twitter_token
+    @user = current_user
+    auth_hash = request.env['omniauth.auth']
+    accesstoken = auth_hash["credentials"]["token"]
+    accesssecret = auth_hash["credentials"]["secret"]
+    @user.twittertoken = accesstoken
+    @user.twittersecret = accesssecret
+    @user.save
+    # render :json => auth_hash
+    # raise auth_hash.inspect
+    redirect_to root_path
+  end
 
   private
   # Never trust parameters from the scary internet, only allow the white list through.

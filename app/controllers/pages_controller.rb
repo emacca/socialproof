@@ -12,11 +12,11 @@ class PagesController < ApplicationController
     client = Twitter::REST::Client.new do |config|
       config.consumer_key = "bOwOoiqzjlE56CtThcYQ"
       config.consumer_secret = "1pd0CmGWsSZzxnidBgTjVmg5yUn7CwGBAyaYJnDdik"
-      config.access_token = "2278255818-gJb4PfUOVuJDeryfa8xNovArc2bxbfZozAhv80Q"
-      config.access_token_secret = "56Jy1uA01qJLsOyTUOmgpF9AQKOEtG4yVkyj4WFB2NCIT"
+      config.access_token = current_user.twittertoken
+      config.access_token_secret = current_user.twittersecret
     end
 
-    @tweets = client.user_timeline(current_user.twitter)
+    @tweets = client.home_timeline
     render :json => @tweets
   end
 

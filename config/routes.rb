@@ -2,6 +2,7 @@ Socialproof::Application.routes.draw do
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+  get '/auth/:provider/callback', :to => 'users#set_twitter_token'
 
   get '/api/tweets' => 'pages#tweets'
   get '/api/pins' => 'pages#pins'
@@ -9,8 +10,8 @@ Socialproof::Application.routes.draw do
   root 'pages#index'
 
   # Example of regular route:
-   get '/sociallinks' => 'users#sociallinks'
-   patch '/socialupdate' => 'users#socialupdate'
+  get '/sociallinks' => 'users#sociallinks'
+  patch '/socialupdate' => 'users#socialupdate'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

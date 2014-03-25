@@ -1,3 +1,5 @@
+require "instagram"
+
 class UsersController < ApplicationController
 
   def sociallinks
@@ -29,6 +31,18 @@ class UsersController < ApplicationController
     # raise auth_hash.inspect
     redirect_to root_path
   end
+
+  def set_instagram_token
+    @user = current_user
+    auth_hash = request.env['omniauth.auth']
+    instatoken = auth_hash["credentials"]["token"]
+    @user.instagramtoken = instatoken
+    @user.save
+    # raise auth_hash.inspect
+    redirect_to root_path
+    # render :json => auth_hash
+  end
+
 
   private
   # Never trust parameters from the scary internet, only allow the white list through.

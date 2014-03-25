@@ -1,48 +1,80 @@
 <section class="container">
   <nav>
     <a href="/auth/twitter" class="twitter">Twitter</a>
-  <a href="#" class="twitterfeed">TweetFeed</a>
-    <a href="#" class="pins">Pins</a>
-    <a href="#" class="instagram">Instagram</a>
+    <a href="#" class="twitterfeed">TweetFeed</a>
+    <a href="#" class="gramsfeed">InstagramFeed</a>
+    <a href="/auth/instagram" class="instagram">Instagram</a>
   </nav>
 
   <article class="twitter-box">
-    
+    <h2>tweetfeed</h2>
+
   </article>
 
-  <article class="instagram">
-    
-  </article>
+  <article class="instagram-box">
+    <h2>gramfeed</h2>
 
-  <article class="pinterest">
     
   </article>
 
 </section>
 
+  <script type="text/template" id="gram-template">
+  <div class="box">
+  <img src="<%%= image %>">
+  </div>
+  </script>
+
+  <script type="text/template" id="tweet-template">
+  <div class="single-tweet">
+  <p><%%= tweet %></p>
+  <p><%%= created_at %></p>
+  <a href="<%%= url %>"></a>
+  <p>
+  </div>
+  </script>
+
 
 <script>
-$('.twitter-box').hide();
-$('.twitterfeed').on('click', function(){
-  $('.twitter-box').show();
+$('.twitterfeed').on('click', function(e){
+  e.preventDefault();
   $.ajax({
     url:'/api/tweets',
     dataType: 'json',
     type: 'get'
-  }).done(function(data){
-    console.log(data);
+  }).done(function(data2){
+    var tweetList = data2;
+    // var time = tweetList[0].created_at;
+    // var tweet = tweetList[0].text;
+
+    var tweetTemplate = $('#tweet-template').html();
+    var $twitterBox = $('.twitter-box');
+    $(tweetList).each(function(){
+      var html = _.template(tweetTemplate, {tweet: this.text, created_at: this.created_at, url: this.entities.urls.expanded_url});
+      $twitterBox.append(html);
+    })
+
   })
 })
 
 
-// $('.pins').on('click', function(){
-//   $.ajax({
-//     url:'api/pins',
-//     dataType: 'json',
-//     type: 'get'
-//   }).done(function(data){
-//     console.log(data);
-//   })
-// })
+$('.gramsfeed').on('click', function(e){
+  e.preventDefault();
+  $.ajax({
+    url:'/api/grams',
+    dataType: 'json',
+    type: 'get'
+  }).done(function(data2){
+    var dataList = data2;
+    var dataArray = dataList.data
+    var gramTemplate = $('#gram-template').html();
+    var $instagramBox = $('.instagram-box');
+    $(dataArray).each (function(){
+      var html = _.template(gramTemplate, {image: this.images.thumbnail.url});
+      $instagramBox.append(html);
+    });
+
+})
+})
 </script>
 

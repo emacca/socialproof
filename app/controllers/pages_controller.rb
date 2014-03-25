@@ -1,5 +1,6 @@
 require 'simple-rss'
 require 'open-uri'
+require "instagram"
 
 class PagesController < ApplicationController
 
@@ -23,6 +24,14 @@ class PagesController < ApplicationController
   def pins
     @rss = SimpleRSS.parse open("http://www.pinterest.com/#{current_user.pinterest}/feed.rss")
     render :json => @rss
+  end
+
+  def grams 
+    url = 'https://api.instagram.com/v1/users/self/feed?access_token=' + current_user.instagramtoken
+    @list = HTTParty.get(url) 
+    @gram = @list.parsed_response["data"].first
+    @gram["images"]["thumbnail"]["url"]
+    render :json => @list
   end
 
 end

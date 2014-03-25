@@ -46,7 +46,10 @@ end
 gem 'twitter', '~> 5.0.0.rc.1'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'omniauth-instagram'
+gem 'instagram'
 
+gem 'httparty'
 #rss feed 
 gem 'simple-rss'
 

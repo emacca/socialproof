@@ -61,7 +61,7 @@ group :development, :test do
   # https://gist.github.com/cjolly/6265302
   gem 'dotenv-rails'
   #rspec twitter
-  gem 'webmock'
+  # gem 'webmock'
   # gem 'mocha'
   gem 'shoulda'
   gem 'simplecov'

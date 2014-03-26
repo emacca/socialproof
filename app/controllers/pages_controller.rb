@@ -21,10 +21,10 @@ class PagesController < ApplicationController
     render :json => @tweets
   end
 
-  def pins
-    @rss = SimpleRSS.parse open("http://www.pinterest.com/#{current_user.pinterest}/feed.rss")
-    render :json => @rss
-  end
+  # def pins
+  #   @rss = SimpleRSS.parse open("http://www.pinterest.com/#{current_user.pinterest}/feed.rss")
+  #   render :json => @rss
+  # end
 
   def grams 
     url = 'https://api.instagram.com/v1/users/self/feed?access_token=' + current_user.instagramtoken

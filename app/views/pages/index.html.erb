@@ -1,3 +1,4 @@
+<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 <section class="container">
   <nav>
     <a href="/auth/twitter" class="twitter">Twitter</a>
@@ -23,23 +24,31 @@
 </section>
 
 <script type="text/template" id="gram-template">
-<div class="box">
-<a href="<%%= link %>"><img src="<%%= image %>"></a>
-<img src="<%%= userprofilepic %>">
-<p><%%= username %></p>
-<p><%%= likecount %></p>
-<p><%%= caption %></p>
-<p><%%= tags %></p>
-</div>
+<article class="instaone">
+  <div class="instaleft">
+    <a href="<%%= link %>"><img src="<%%= image %>"></a>
+  </div>
+  <div class="instaright">
+    <div class="userinfo">
+      <p><h3><%%= username %></h3>
+      <img src="<%%= userprofilepic %>" width="40px"></p>
+    </div>
+    <div class="photoinfo">
+      <p><%%= likecount %></p>
+      <p><%%= caption %></p>
+      <p><%%= tags %></p>
+    </div>
+  </div>
+</article>
 </script>
 
 <script type="text/template" id="tweet-template">
 <div class="single-tweet">
-<img src="<%%= uprofileimage %>">
-<a href="<%%= uurl %>"><%%= uname %></a>
-<a href="http://twitter.com/<%%= sname %>">@<%%= sname%></a>
-<p><%%= tweet %></p>
-<a href="<%%= tweetlink %>"><%%= tweetlink %></a>
+  <img src="<%%= uprofileimage %>">
+    <a href="<%%= uurl %>"><%%= uname %></a>
+    <a href="http://twitter.com/<%%= sname %>">@<%%= sname%></a>
+    <p><%%= tweet %></p>
+    <a href="<%%= tweetlink %>"><%%= tweetlink %></a>
 </div>
 </script>
 
@@ -76,7 +85,7 @@ $('.gramsfeed').on('click', function(e){
     var gramTemplate = $('#gram-template').html();
     var $instagramBox = $('.instagram-box');
     $(dataArray).each (function(){
-      var html = _.template(gramTemplate, {image: this.images.low_resolution.url, link: this.link, likecount: this.likes.count.length > 0 ? this.likes.count : '', username: this.user.username, caption: this.caption.text, tags: this.tags.length > 0 ? this.tags : '', userprofilepic: this.user.profile_picture});
+      var html = _.template(gramTemplate, {image: this.images.low_resolution.url, link: this.link, likecount: this.likes.count.length > 0 ? this.likes.count : '', username: this.user.username, caption: this.caption ? this.caption.text : '', tags: this.tags.length > 0 ? this.tags : '', userprofilepic: this.user.profile_picture});
       $instagramBox.append(html);
     });
 

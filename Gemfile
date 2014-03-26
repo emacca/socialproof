@@ -53,13 +53,15 @@ gem 'httparty'
 #rss feed 
 gem 'simple-rss'
 
+
 group :development, :test do
   # testing 
   gem 'rspec-rails'
   # Stop Versioning Rails Secret Tokens
   # https://gist.github.com/cjolly/6265302
   gem 'dotenv-rails'
-
+  #rspec twitter
+  gem 'webmock'
   # gem 'mocha'
   gem 'shoulda'
   gem 'simplecov'

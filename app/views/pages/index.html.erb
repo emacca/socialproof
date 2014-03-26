@@ -4,6 +4,9 @@
     <a href="#" class="twitterfeed">TweetFeed</a>
     <a href="#" class="gramsfeed">InstagramFeed</a>
     <a href="/auth/instagram" class="instagram">Instagram</a>
+    <% if user_signed_in? %>
+    <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+    <% end %>
   </nav>
 
   <article class="twitter-box">
@@ -19,20 +22,23 @@
 
 </section>
 
-  <script type="text/template" id="gram-template">
-  <div class="box">
-  <img src="<%%= image %>">
-  </div>
-  </script>
+<script type="text/template" id="gram-template">
+<div class="box">
+<img src="<%%= image %>">
+</div>
+</script>
 
-  <script type="text/template" id="tweet-template">
-  <div class="single-tweet">
-  <p><%%= tweet %></p>
-  <p><%%= created_at %></p>
-  <a href="<%%= url %>"></a>
-  <p>
-  </div>
-  </script>
+<script type="text/template" id="tweet-template">
+<div class="single-tweet">
+<img src="<%%= uprofileimage %>">
+<a href="<%%= uurl %>"><%%= uname %></a>
+<p><%%= tweet %></p>
+<a href="<%%= tweetlink %>"><%%= tweetlink %></a>
+
+
+<p>
+</div>
+</script>
 
 
 <script>
@@ -46,13 +52,26 @@ $('.twitterfeed').on('click', function(e){
     var tweetList = data2;
     // var time = tweetList[0].created_at;
     // var tweet = tweetList[0].text;
+    // var uname = tweetList[0].user.name
+    // var sname = tweetList[0].user.screen_name
+    // var uurl = tweetList[0].user.url
+    // var uprofileimage = tweetList[0].user.profile_image_url
+
+    // var srclink = tweetList[0].user.entities.url.urls[0].expanded_url
+
 
     var tweetTemplate = $('#tweet-template').html();
     var $twitterBox = $('.twitter-box');
     $(tweetList).each(function(){
-      var html = _.template(tweetTemplate, {tweet: this.text, created_at: this.created_at, url: this.entities.urls.expanded_url});
+      var html = _.template(tweetTemplate, {tweet: this.text, tweetlink: this.entities.urls.length > 0 ? this.entities.urls[0].url : '', uname: this.user.name, uurl: this.user.url, uprofileimage: this.user.profile_image_url});
       $twitterBox.append(html);
     })
+
+    console.log(uname)
+    console.log(sname)
+    console.log(uurl)
+    console.log(uprofileimage)
+    console.log(srclink)
 
   })
 })
@@ -74,7 +93,7 @@ $('.gramsfeed').on('click', function(e){
       $instagramBox.append(html);
     });
 
-})
+  })
 })
 </script>
 

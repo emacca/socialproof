@@ -44,11 +44,14 @@
 
 <script type="text/template" id="tweet-template">
 <div class="single-tweet">
-  <img src="<%%= uprofileimage %>">
-    <a href="<%%= uurl %>"><%%= uname %></a>
-    <a href="http://twitter.com/<%%= sname %>">@<%%= sname%></a>
-    <p><%%= tweet %></p>
-    <a href="<%%= tweetlink %>"><%%= tweetlink %></a>
+  <div class="lefttweet">
+    <img src="<%%= uprofileimage %>">
+  </div>
+  <div class="righttweet">
+    <p><a href="<%%= uurl %>"><%%= uname %></a>
+    <a href="http://twitter.com/<%%= sname %>"><span class="tweethandle">@<%%= sname%><span></a></p>
+    <p><%%= tweet %><a href="<%%= tweetlink %>"><%%= tweetlink %></a></p> 
+  </div>
 </div>
 </script>
 

@@ -44,9 +44,15 @@ group :production do
 end
 
 gem 'twitter', '~> 5.0.0.rc.1'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-instagram'
+gem 'instagram'
 
+gem 'httparty'
 #rss feed 
 gem 'simple-rss'
+
 
 group :development, :test do
   # testing 
@@ -54,7 +60,8 @@ group :development, :test do
   # Stop Versioning Rails Secret Tokens
   # https://gist.github.com/cjolly/6265302
   gem 'dotenv-rails'
-
+  #rspec twitter
+  gem 'webmock'
   # gem 'mocha'
   gem 'shoulda'
   gem 'simplecov'

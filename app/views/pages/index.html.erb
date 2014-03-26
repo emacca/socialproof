@@ -24,7 +24,12 @@
 
 <script type="text/template" id="gram-template">
 <div class="box">
-<img src="<%%= image %>">
+<a href="<%%= link %>"><img src="<%%= image %>"></a>
+<img src="<%%= userprofilepic %>">
+<p><%%= username %></p>
+<p><%%= likecount %></p>
+<p><%%= caption %></p>
+<p><%%= tags %></p>
 </div>
 </script>
 
@@ -32,11 +37,9 @@
 <div class="single-tweet">
 <img src="<%%= uprofileimage %>">
 <a href="<%%= uurl %>"><%%= uname %></a>
+<a href="http://twitter.com/<%%= sname %>">@<%%= sname%></a>
 <p><%%= tweet %></p>
 <a href="<%%= tweetlink %>"><%%= tweetlink %></a>
-
-
-<p>
 </div>
 </script>
 
@@ -50,29 +53,12 @@ $('.twitterfeed').on('click', function(e){
     type: 'get'
   }).done(function(data2){
     var tweetList = data2;
-    // var time = tweetList[0].created_at;
-    // var tweet = tweetList[0].text;
-    // var uname = tweetList[0].user.name
-    // var sname = tweetList[0].user.screen_name
-    // var uurl = tweetList[0].user.url
-    // var uprofileimage = tweetList[0].user.profile_image_url
-
-    // var srclink = tweetList[0].user.entities.url.urls[0].expanded_url
-
-
     var tweetTemplate = $('#tweet-template').html();
     var $twitterBox = $('.twitter-box');
     $(tweetList).each(function(){
-      var html = _.template(tweetTemplate, {tweet: this.text, tweetlink: this.entities.urls.length > 0 ? this.entities.urls[0].url : '', uname: this.user.name, uurl: this.user.url, uprofileimage: this.user.profile_image_url});
+      var html = _.template(tweetTemplate, {tweet: this.text, tweetlink: this.entities.urls.length > 0 ? this.entities.urls[0].url : '', uname: this.user.name, uurl: this.user.url, uprofileimage: this.user.profile_image_url, sname: this.user.screen_name});
       $twitterBox.append(html);
     })
-
-    console.log(uname)
-    console.log(sname)
-    console.log(uurl)
-    console.log(uprofileimage)
-    console.log(srclink)
-
   })
 })
 
@@ -86,10 +72,11 @@ $('.gramsfeed').on('click', function(e){
   }).done(function(data2){
     var dataList = data2;
     var dataArray = dataList.data
+
     var gramTemplate = $('#gram-template').html();
     var $instagramBox = $('.instagram-box');
     $(dataArray).each (function(){
-      var html = _.template(gramTemplate, {image: this.images.thumbnail.url});
+      var html = _.template(gramTemplate, {image: this.images.low_resolution.url, link: this.link, likecount: this.likes.count.length > 0 ? this.likes.count : '', username: this.user.username, caption: this.caption.text, tags: this.tags.length > 0 ? this.tags : '', userprofilepic: this.user.profile_picture});
       $instagramBox.append(html);
     });
 

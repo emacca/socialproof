@@ -64,28 +64,52 @@ p{
   overflow-y: auto;
   margin:0 auto;
 }
-
+.clear:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
 .instaleft{
-  // width:50%;
-  float:left
+  width:35%;
+  float:left;
+  // height:100%;
+  a{
+    width:100%;
+    height:100%;
+    &:hover{
+      background-color:transparent;
+    }
+  }
+  img{
+    width: 100%;
+    height: 100%;
+    max-width: 306px;
+    max-height: 306px;
+  }
 }
 .instaright{
-  // width:49%;
-  // float:right;
+  width:65%;
+  float:right;
+  height:100%;
 }
 .instaone{
   width: 100%;
   border-bottom: 2px solid #ccc;
-  height: 306px;
+  max-height: 320px;
   border-radius: 3px;
   border: 1px solid #999;
   -webkit-box-shadow: 0 1px 16px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 1px 16px rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 16px rgba(0, 0, 0, 0.1);
   margin-bottom:20px;
+  clear:both;
 }
 .userinfo{
   height: 40px;
+  width:100%;
   border-bottom: 1px solid #ddd;
   margin: 1px 0 -1px;
   background: #e6e6e6 url(//d36xtkk24g8jdx.cloudfront.net/bluebar/31f355e/images/bg/white-gradient-100px.png) repeat-x 50% 50%;
@@ -106,15 +130,19 @@ p{
     float: left;
   }
   p{
-    line-height: 42px;
+    // line-height: 42px;
     margin-left: 20px;
   }
 }
 
+.rightinfo{
+  width:100%;
+  height:100%;
+}
 .photoinfo{
-  margin-left:20px;
+  // margin-left:20px;
   width: 90%;
-  margin-top: 30px;
+  // margin-top: 30px;
   p{
     font-weight:100;
     font-size:12px;

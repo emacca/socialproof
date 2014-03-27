@@ -18,4 +18,3 @@
 /config/database.yml
 .DS_Store
 .env
-.idea

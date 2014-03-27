@@ -17,6 +17,7 @@
     </div>
 
   <article id="twitter">
+    <%= image_tag 'twitter-engage.svg', :class=> "hovmessage" %>
     <div class="padding"></div>
     <a href="#" id="bird" class="twitterfeed">tweet</a>
     <%= image_tag 'note1.svg', :id => "note1", :class=> "hide" %>
@@ -26,9 +27,11 @@
         <article class="twitter-box"></article>
       </div>
     </aside>
+    <a href="#" class="refresh"><%= image_tag 'refresh.svg' %></a>
   </article>
 
   <article id="instagram">
+    <%= image_tag 'insta-engage.svg', :class=> "hovmessage2" %>
      <div id="white"></div> 
       <div class="padding"></div>
       <a href="#" id="insta" class="gramsfeed">insta</a>
@@ -37,6 +40,7 @@
           <article class="instagram-box"></article>
         </div>
       </aside>
+      <a href="#" class="refresh2"><%= image_tag 'refresh.svg' %></a> 
   </article>
 
 </section>
@@ -108,12 +112,13 @@ $('.gramsfeed').on('click', function(e){
   }).done(function(data2){
     var dataList = data2;
     var dataArray = dataList.data
-
     var gramTemplate = $('#gram-template').html();
     var $instagramBox = $('.instagram-box');
+    $instagramBox.html("");
     $(dataArray).each (function(){
       var html = _.template(gramTemplate, {image: this.images.low_resolution.url, link: this.link, likecount: this.likes.count.length > 0 ? this.likes.count : '', username: this.user.username, caption: this.caption ? this.caption.text : '', tags: this.tags.length > 0 ? this.tags : '', userprofilepic: this.user.profile_picture});
       $instagramBox.append(html);
+      console.log("worked insta");
     });
 
   })

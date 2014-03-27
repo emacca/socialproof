@@ -1,11 +1,3 @@
-GIT
-  remote: git://github.com/arunagw/omniauth-twitter.git
-  revision: 25c2bddb46226369e152ebfcf1d7a363d48ea869
-  specs:
-    omniauth-twitter (1.0.1)
-      multi_json (~> 1.3)
-      omniauth-oauth (~> 1.0)
-
 GEM
   remote: https://rubygems.org/
   specs:

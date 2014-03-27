@@ -1,17 +1,53 @@
 body{
   font-family:sans-serif;
+  font-weight: 100;
 }
 p{
   padding:0;
   margin:0;
 }
+
+//twitter
 .twitter-box{
   width:600px;
-  height:100%;
-  background-color: #ccc;
+  height:375px;
   float:left;
   clear: both;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow-x: hidden; 
+  overflow-y: auto;
 }
+
+.single-tweet{
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 30px;
+  margin-bottom: 15px;
+}
+
+.lefttweet{
+  width: 60px;
+  float: left;
+}
+
+.righttweet{
+  a{
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  p{
+    font-weight: 100;
+    font-size: 13px;
+  }
+  .tweethandle{
+    font-weight: 100;
+  }
+}
+
+////instagram
+
 .instagram-box{
   width:600px;
   height:375px;

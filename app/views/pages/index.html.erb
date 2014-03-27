@@ -1,13 +1,36 @@
 <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 <section class="container">
+  <div id="accordian">
+    <ul>
+      <li>
+        <h3>Menu</h3>
+        <ul>
+          <li><a><%= @user.email%></a></li>
+          <li><a href="/auth/twitter" class="twitter">Authorise Twitter</a></li>
+          <li><a href="/auth/instagram" class="instagram">Authorise Instagram</a></li>
+          <li><% if user_signed_in? %>
+            <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+            <% end %></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  <script>
+  $(document).ready(function(){
+  $("#accordian h3").click(function(){
+    //slide up all the link lists
+    $("#accordian ul ul").slideUp();
+    //slide down the link list below the h3 clicked - only if its closed
+    if(!$(this).next().is(":visible"))
+    {
+      $(this).next().slideDown();
+    }
+  })
+})
+  </script>
   <nav>
-    <a href="/auth/twitter" class="twitter">Twitter</a>
     <a href="#" class="twitterfeed">TweetFeed</a>
     <a href="#" class="gramsfeed">InstagramFeed</a>
-    <a href="/auth/instagram" class="instagram">Instagram</a>
-    <% if user_signed_in? %>
-    <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-    <% end %>
   </nav>
 
   <article class="twitter-box">
@@ -24,31 +47,34 @@
 </section>
 
 <script type="text/template" id="gram-template">
-<article class="instaone">
-  <div class="instaleft">
-    <a href="<%%= link %>"><img src="<%%= image %>"></a>
-  </div>
-  <div class="instaright">
-    <div class="userinfo">
-      <p><h3><%%= username %></h3>
-      <img src="<%%= userprofilepic %>" width="40px"></p>
+  <article class="instaone">
+    <div class="instaleft">
+      <a href="<%%= link %>"><img src="<%%= image %>"></a>
     </div>
-    <div class="photoinfo">
-      <p><%%= likecount %></p>
-      <p><%%= caption %></p>
-      <p><%%= tags %></p>
+    <div class="instaright">
+      <div class="userinfo">
+        <p><h3><%%= username %></h3>
+        <img src="<%%= userprofilepic %>" width="40px"></p>
+      </div>
+      <div class="photoinfo">
+        <p><%%= likecount %></p>
+        <p><%%= caption %></p>
+        <p><%%= tags %></p>
+      </div>
     </div>
-  </div>
-</article>
+  </article>
 </script>
 
 <script type="text/template" id="tweet-template">
 <div class="single-tweet">
-  <img src="<%%= uprofileimage %>">
-    <a href="<%%= uurl %>"><%%= uname %></a>
-    <a href="http://twitter.com/<%%= sname %>">@<%%= sname%></a>
-    <p><%%= tweet %></p>
-    <a href="<%%= tweetlink %>"><%%= tweetlink %></a>
+<div class="lefttweet">
+<img src="<%%= uprofileimage %>">
+</div>
+<div class="righttweet">
+<p><a href="<%%= uurl %>"><%%= uname %></a>
+<a href="http://twitter.com/<%%= sname %>"><span class="tweethandle">@<%%= sname%><span></a></p>
+<p><%%= tweet %><a href="<%%= tweetlink %>"><%%= tweetlink %></a></p> 
+</div>
 </div>
 </script>
 

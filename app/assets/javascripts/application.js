@@ -15,6 +15,6 @@
 //= require underscore.min
 //= require backbone
 //= require backbone/app
-//= require turbolinks
 //= require bootstrap
+//= require animation
 //= require_tree .

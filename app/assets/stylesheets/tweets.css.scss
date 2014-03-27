@@ -6,17 +6,18 @@ p{
   padding:0;
   margin:0;
 }
+.container{
+  height:100%;
+}
 
 //twitter
 .twitter-box{
-  width:600px;
-  height:375px;
-  float:left;
+  width:90%;
+  height:95%;
   clear: both;
-  border: 1px solid #ccc;
-  border-radius: 5px;
   overflow-x: hidden; 
   overflow-y: auto;
+  margin:0 auto;
 }
 
 .single-tweet{
@@ -49,23 +50,14 @@ p{
 ////instagram
 
 .instagram-box{
-  width:600px;
-  height:375px;
-  background-color: #ccc;
-  float: right;
-  background: #e0e1e2 url(//d36xtkk24g8jdx.cloudfront.net/bluebar/31f355e/images/shared/noise-2.png);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 63%;
+  height: 90%;
   border-width: 0 1px;
-  /* min-width: 240px; */
-  /* max-width: 512px; */
-  padding: 16px 32px;
-  /* margin-left: 224px; */
-  -webkit-box-shadow: inset 1px 0 0 rgba(0,0,0,.05), inset -1px 0 0 rgba(0,0,0,.05);
-  -moz-box-shadow: inset 1px 0 0 rgba(0,0,0,.05), inset -1px 0 0 rgba(0,0,0,.05);
-  box-shadow: inset 1px 0 0 rgba(0,0,0,.05), inset -1px 0 0 rgba(0,0,0,.05);
+  padding: 11px 34px;
   font-weight: 100;
-  overflow-x: hidden; 
+  overflow-x: hidden;
   overflow-y: auto;
+  margin:0 auto;
 }
 
 .instaleft{

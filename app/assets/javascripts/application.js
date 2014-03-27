@@ -16,4 +16,5 @@
 //= require backbone
 //= require backbone/app
 //= require turbolinks
+//= require bootstrap
 //= require_tree .

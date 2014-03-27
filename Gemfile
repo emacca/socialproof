@@ -54,6 +54,7 @@ gem 'httparty'
 gem 'simple-rss'
 
 
+
 group :development, :test do
   # testing 
   gem 'rspec-rails'

@@ -1,4 +1,7 @@
 Socialproof::Application.routes.draw do
+  resources :authentications
+  get '/auth/:provider/callback' => 'authentications#create'
+
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

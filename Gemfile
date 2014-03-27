@@ -48,6 +48,9 @@ gem 'twitter', '~> 5.0.0.rc.1'
 #rss feed 
 gem 'simple-rss'
 
+gem 'omniauth-twitter', :github => 'arunagw/omniauth-twitter'
+gem 'omniauth'
+
 group :development, :test do
   # testing 
   gem 'rspec-rails'

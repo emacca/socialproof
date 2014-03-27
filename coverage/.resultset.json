@@ -3,9 +3,12 @@
     "coverage": {
       "/Users/Macca/Desktop/WDI/wdi_project_three/final_project/socialproof/app/models/user.rb": [
         1,
+        1,
         null,
         null,
         1,
+        null,
+        null,
         null,
         null
       ],
@@ -90,6 +93,6 @@
         null
       ]
     },
-    "timestamp": 1395895850
+    "timestamp": 1395958482
   }
 }

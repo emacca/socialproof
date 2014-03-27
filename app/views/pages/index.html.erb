@@ -9,11 +9,12 @@
           <li><a href="/" class="twitter">Authorise Accounts</a></li>
           <li><% if user_signed_in? %>
             <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-            <% end %></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
+            <% end %>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
 
   <article id="twitter">
     <%= image_tag 'twitter-engage.svg', :class=> "hovmessage" %>
@@ -23,110 +24,152 @@
     <%= image_tag 'note2.svg', :id => "note2", :class=> "hide" %>
     <aside class="feed hide">
       <div class="body twit">
+        <div class="loader-container">
+          <div class="loader2"></div>
+        </div>
         <article class="twitter-box"></article>
       </div>
     </aside>
-    <a href="#" class="refresh"><%= image_tag 'refresh.svg' %></a>
+    <a href="#" id="refreshing2" class="refresh twitterfeed"><%= image_tag 'refresh.svg' %></a>
   </article>
 
   <article id="instagram">
     <%= image_tag 'insta-engage.svg', :class=> "hovmessage2" %>
-     <div id="white"></div> 
-      <div class="padding"></div>
-      <a href="#" id="insta" class="gramsfeed">insta</a>
-      <aside class="feed2 hide">
-        <div class="body gram">
-          <article class="instagram-box"></article>
+    <div id="white"></div> 
+    <div class="padding"></div>
+    <a href="#" id="insta" class="gramsfeed">insta</a>
+    <aside class="feed2 hide">
+      <div class="body gram">
+        <div class="loader-container">
+          <div class="loader2"></div>
         </div>
-      </aside>
-      <a href="#" class="refresh2"><%= image_tag 'refresh.svg' %></a> 
-  </article>
+        <article class="instagram-box">
 
+        </article>
+      </div>
+    </aside>
+    <a href="#" id="refreshing" class="refresh2 gramsfeed"><%= image_tag 'refresh.svg' %></a>
+  </article>
 </section>
 
 
-<% content_for :js do %>
+  <% content_for :js do %>
 
-<script type="text/template" id="gram-template">
+  <script type="text/template" id="gram-template">
   <article class="instaone">
-    <div class="instaleft">
-      <a href="<%%= link %>" target="_blank"><img src="<%%= image %>"></a>
-    </div>
-    <div class="instaright">
-      <div class="userinfo">
-        <div class="rightinfo">
-          <p><h3><%%= username %></h3>
-          <img src="<%%= userprofilepic %>" width="40px"></p>
-        </div>
-        <div class="photoinfo">
-          <p><%%= likecount %></p>
-          <p><%%= caption %></p>
-        </div>
+  <div class="instaleft">
+    <a href="<%%= link %>" target="_blank"><img src="<%%= image %>"></a>
+  </div>
+  <div class="instaright">
+    <div class="userinfo">
+      <div class="rightinfo">
+        <p><h3><%%= username %></h3>
+        <img src="<%%= userprofilepic %>" width="40px"></p>
+      </div>
+      <div class="photoinfo">
+        <p><%%= likecount %></p>
+        <p><%%= caption %></p>
       </div>
     </div>
-    <div class="clear"></div>
-  </article>
-</script>
-
-<script type="text/template" id="tweet-template">
-  <div class="single-tweet">
-    <div class="lefttweet">
-      <img src="<%%= uprofileimage %>">
-    </div>
-    <div class="righttweet">
-      <p><a href="<%%= uurl %>" target="_blank"><%%= uname %></a>
-      <a href="http://twitter.com/<%%= sname %>" target="_blank"><span class="tweethandle">@<%%= sname%><span></a></p>
-      <p><%%= tweet %><a href="<%%= tweetlink %>" target="_blank"><%%= tweetlink %></a></p> 
-    </div>
   </div>
-</script>
+  <div class="clear"></div>
+  </article>
+  </script>
+
+  <script type="text/template" id="tweet-template">
+    <div class="single-tweet">
+      <div class="lefttweet">
+        <img src="<%%= uprofileimage %>">
+      </div>
+      <div class="righttweet">
+        <p><a href="<%%= uurl %>" target="_blank"><%%= uname %></a>
+        <a href="http://twitter.com/<%%= sname %>" target="_blank"><span class="tweethandle">@<%%= sname%><span></a></p>
+        <p><%%= tweet %><a href="<%%= tweetlink %>" target="_blank"><%%= tweetlink %></a></p> 
+      </div>
+    </div>
+  </script>
 
 
-<script>
+  <script>
 
-$('.twitterfeed').on('click', function(e){
-  e.preventDefault();
-  $.ajax({
-    url:'/api/tweets',
-    dataType: 'json',
-    type: 'get'
-  }).done(function(data2){
-    var tweetList = data2;
-    var tweetTemplate = $('#tweet-template').html();
-    var $twitterBox = $('.twitter-box');
-    $twitterBox.html("");
-    $(tweetList).each(function(){
-      var html = _.template(tweetTemplate, {tweet: this.text, tweetlink: this.entities.urls.length > 0 ? this.entities.urls[0].url : '', uname: this.user.name, uurl: this.user.url, uprofileimage: this.user.profile_image_url, sname: this.user.screen_name});
-      $twitterBox.append(html);
-      console.log("worked");
+  $('.twitterfeed').on('click', function(e){
+    e.preventDefault();
+    var tweetresult = $.ajax({
+      url:'/api/tweets',
+      dataType: 'json',
+      type: 'get'
+    });
+
+    $('.loader-container').hide();
+    var reloading = false;
+    if (this.id === "refreshing2"){
+      spinnert();
+      reloading = true;
+    };
+
+    tweetresult.done(function(data2){
+      if (reloading ===  true){spinnerofft()};
+      var tweetList = data2;
+      var tweetTemplate = $('#tweet-template').html();
+      var $twitterBox = $('.twitter-box');
+      $twitterBox.html("");
+      $(tweetList).each(function(){
+        var html = _.template(tweetTemplate, {tweet: this.text, tweetlink: this.entities.urls.length > 0 ? this.entities.urls[0].url : '', uname: this.user.name, uurl: this.user.url, uprofileimage: this.user.profile_image_url, sname: this.user.screen_name});
+        $twitterBox.append(html);
+        console.log("worked");
+      })
     })
   })
-})
+  var spinnert = function(){
+    $('.refresh').on('click', function(e) {
+      e.preventDefault();
+      $('.loader-container').show();
+      $('.loader2').show();
+    });
+  }
 
+  var spinnerofft = function(){
+    $('.loader-container').hide();
+      $('.loader2').hide();
+  }
 
-$('.gramsfeed').on('click', function(e){
-  e.preventDefault();
-  $.ajax({
-    url:'/api/grams',
-    dataType: 'json',
-    type: 'get'
-  }).done(function(data2){
-    var dataList = data2;
-    var dataArray = dataList.data
-    var gramTemplate = $('#gram-template').html();
-    var $instagramBox = $('.instagram-box');
-    $instagramBox.html("");
-    $(dataArray).each (function(){
+//instagram
+  $('.gramsfeed').on('click', function(e){
+    e.preventDefault();
+    var result = $.ajax({
+      url:'/api/grams',
+      dataType: 'json',
+      type: 'get'
+    });
+
+    $('.loader-container').hide();
+    var reloading = false;
+    if (this.id === "refreshing"){
+      spinner();
+      reloading = true;
+    };
+
+    result.done(function(data2){
+      if (reloading ===  true){spinneroff()};
+
+      var dataList = data2;
+      var dataArray = dataList.data
+      var gramTemplate = $('#gram-template').html();
+      var $instagramBox = $('.instagram-box');
+      $instagramBox.html("");
+      $(dataArray).each (function(){
+      // var caption2 = this.caption ? this.caption.text : '';
+      // var caplength = $.trim(capiton2).substring(0, 10).split(" ").slice(0, -1).join(" ") + "...";
       var html = _.template(gramTemplate, {image: this.images.low_resolution.url, link: this.link, likecount: this.likes.count.length > 0 ? this.likes.count : '', username: this.user.username, caption: this.caption ? this.caption.text : '', userprofilepic: this.user.profile_picture});
       $instagramBox.append(html);
       console.log("worked insta");
     });
 
-  })
-})
+    })
+  });
 
   $(document).ready(function(){
-  $("#accordian h3").click(function(){
+    $("#accordian h3").click(function(){
     //slide up all the link lists
     $("#accordian ul ul").slideUp();
     //slide down the link list below the h3 clicked - only if its closed
@@ -135,8 +178,24 @@ $('.gramsfeed').on('click', function(e){
       $(this).next().slideDown();
     }
   })
-})
+  });
 
-</script>
-<% end %>
+ var spinner = function(){
+    $('.refresh2').on('click', function(e) {
+      e.preventDefault();
+      $('.loader-container').show();
+      $('.loader2').show();
+    });
+  }
+
+  var spinneroff = function(){
+    $('.loader-container').hide();
+      $('.loader2').hide();
+  }
+  </script>
+  
+  <script>
+
+  </script>
+  <% end %>
 

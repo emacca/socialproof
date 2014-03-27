@@ -13,11 +13,13 @@ p{
 //twitter
 .twitter-box{
   width:90%;
-  height:95%;
+  height:94%;
   clear: both;
   overflow-x: hidden; 
   overflow-y: auto;
   margin:0 auto;
+  position: relative;
+  top: 3%;
 }
 
 .single-tweet{
@@ -33,10 +35,13 @@ p{
 
 .righttweet{
   a{
-    color: #000;
+    color: #3860FF;
     text-decoration: none;
     font-weight: bold;
     font-size: 14px;
+  }
+  a:hover{
+    background-color: transparent;
   }
   p{
     font-weight: 100;

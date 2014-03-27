@@ -1,52 +1,121 @@
+<link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 <section class="container">
+  <div id="accordian">
+    <ul>
+      <li>
+        <h3>Menu</h3>
+        <ul>
+          <li><a><%= @user.email%></a></li>
+          <li><a href="/auth/twitter" class="twitter">Authorise Twitter</a></li>
+          <li><a href="/auth/instagram" class="instagram">Authorise Instagram</a></li>
+          <li><% if user_signed_in? %>
+            <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+            <% end %></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  <script>
+  $(document).ready(function(){
+  $("#accordian h3").click(function(){
+    //slide up all the link lists
+    $("#accordian ul ul").slideUp();
+    //slide down the link list below the h3 clicked - only if its closed
+    if(!$(this).next().is(":visible"))
+    {
+      $(this).next().slideDown();
+    }
+  })
+})
+  </script>
   <nav>
-    <a href="#" class="twitter">Twitter</a>
-    <a href="#" class="pins">Pins</a>
-    <a href="#" class="instagram">Instagram</a>
+    <a href="#" class="twitterfeed">TweetFeed</a>
+    <a href="#" class="gramsfeed">InstagramFeed</a>
   </nav>
 
   <article class="twitter-box">
-    
+    <h2>tweetfeed</h2>
+
   </article>
 
-  <article class="instagram">
-    
-  </article>
+  <article class="instagram-box">
+    <h2>gramfeed</h2>
 
-  <article class="pinterest">
     
   </article>
 
 </section>
 
+<script type="text/template" id="gram-template">
+  <article class="instaone">
+    <div class="instaleft">
+      <a href="<%%= link %>"><img src="<%%= image %>"></a>
+    </div>
+    <div class="instaright">
+      <div class="userinfo">
+        <p><h3><%%= username %></h3>
+        <img src="<%%= userprofilepic %>" width="40px"></p>
+      </div>
+      <div class="photoinfo">
+        <p><%%= likecount %></p>
+        <p><%%= caption %></p>
+        <p><%%= tags %></p>
+      </div>
+    </div>
+  </article>
+</script>
+
+<script type="text/template" id="tweet-template">
+<div class="single-tweet">
+<div class="lefttweet">
+<img src="<%%= uprofileimage %>">
+</div>
+<div class="righttweet">
+<p><a href="<%%= uurl %>"><%%= uname %></a>
+<a href="http://twitter.com/<%%= sname %>"><span class="tweethandle">@<%%= sname%><span></a></p>
+<p><%%= tweet %><a href="<%%= tweetlink %>"><%%= tweetlink %></a></p> 
+</div>
+</div>
+</script>
+
 
 <script>
-$('.twitter-box').hide();
-$('.twitter').on('click', function(){
-  $('.twitter-box').show();
+$('.twitterfeed').on('click', function(e){
+  e.preventDefault();
   $.ajax({
     url:'/api/tweets',
     dataType: 'json',
     type: 'get'
-  }).done(function(data){
-    console.log(data);
+  }).done(function(data2){
+    var tweetList = data2;
+    var tweetTemplate = $('#tweet-template').html();
+    var $twitterBox = $('.twitter-box');
+    $(tweetList).each(function(){
+      var html = _.template(tweetTemplate, {tweet: this.text, tweetlink: this.entities.urls.length > 0 ? this.entities.urls[0].url : '', uname: this.user.name, uurl: this.user.url, uprofileimage: this.user.profile_image_url, sname: this.user.screen_name});
+      $twitterBox.append(html);
+    })
   })
 })
 
 
-$('.pins').on('click', function(){
+$('.gramsfeed').on('click', function(e){
+  e.preventDefault();
   $.ajax({
-    url:'api/pins',
+    url:'/api/grams',
     dataType: 'json',
     type: 'get'
-  }).done(function(data){
-    console.log(data);
+  }).done(function(data2){
+    var dataList = data2;
+    var dataArray = dataList.data
+
+    var gramTemplate = $('#gram-template').html();
+    var $instagramBox = $('.instagram-box');
+    $(dataArray).each (function(){
+      var html = _.template(gramTemplate, {image: this.images.low_resolution.url, link: this.link, likecount: this.likes.count.length > 0 ? this.likes.count : '', username: this.user.username, caption: this.caption ? this.caption.text : '', tags: this.tags.length > 0 ? this.tags : '', userprofilepic: this.user.profile_picture});
+      $instagramBox.append(html);
+    });
+
   })
 })
 </script>
 
-
-<h1>home page</h1>
-<%#= @user.twitter %>
-<h2>twitter info</h2>
-<%= @data.inspect %>

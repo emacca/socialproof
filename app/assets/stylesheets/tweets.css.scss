@@ -1,5 +1,126 @@
+body{
+  font-family:sans-serif;
+  font-weight: 100;
+}
+p{
+  padding:0;
+  margin:0;
+}
+
+//twitter
 .twitter-box{
-  width:400px;
-  height:400px;
-  background-color: red;
+  width:600px;
+  height:375px;
+  float:left;
+  clear: both;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow-x: hidden; 
+  overflow-y: auto;
+}
+
+.single-tweet{
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 30px;
+  margin-bottom: 15px;
+}
+
+.lefttweet{
+  width: 60px;
+  float: left;
+}
+
+.righttweet{
+  a{
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  p{
+    font-weight: 100;
+    font-size: 13px;
+  }
+  .tweethandle{
+    font-weight: 100;
+  }
+}
+
+////instagram
+
+.instagram-box{
+  width:600px;
+  height:375px;
+  background-color: #ccc;
+  float: right;
+  background: #e0e1e2 url(//d36xtkk24g8jdx.cloudfront.net/bluebar/31f355e/images/shared/noise-2.png);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-width: 0 1px;
+  /* min-width: 240px; */
+  /* max-width: 512px; */
+  padding: 16px 32px;
+  /* margin-left: 224px; */
+  -webkit-box-shadow: inset 1px 0 0 rgba(0,0,0,.05), inset -1px 0 0 rgba(0,0,0,.05);
+  -moz-box-shadow: inset 1px 0 0 rgba(0,0,0,.05), inset -1px 0 0 rgba(0,0,0,.05);
+  box-shadow: inset 1px 0 0 rgba(0,0,0,.05), inset -1px 0 0 rgba(0,0,0,.05);
+  font-weight: 100;
+  overflow-x: hidden; 
+  overflow-y: auto;
+}
+
+.instaleft{
+  width:50%;
+  float:left
+}
+.instaright{
+  width:49%;
+  float:right;
+}
+.instaone{
+  width: 100%;
+  border-bottom: 2px solid #ccc;
+  height: 306px;
+  background-color: white;
+  border-radius: 3px;
+  border: 1px solid #999;
+  -webkit-box-shadow: 0 1px 16px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 16px rgba(0, 0, 0, 0.1);
+  margin-bottom:20px;
+}
+.userinfo{
+  height: 40px;
+  border-bottom: 1px solid #ddd;
+  margin: 1px 0 -1px;
+  background: #e6e6e6 url(//d36xtkk24g8jdx.cloudfront.net/bluebar/31f355e/images/bg/white-gradient-100px.png) repeat-x 50% 50%;
+  -webkit-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15), 0 0 3px rgba(0,0,0,.1);
+  -moz-box-shadow: inset 0 0 0 1px rgba(255,255,255,.15), 0 0 3px rgba(0,0,0,.1);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.15), 0 0 3px rgba(0,0,0,.1);
+  img{
+    float:right;
+  }
+  h3{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    margin:0;
+    padding:0;
+    margin-left: 20px;
+    line-height: 40px;
+    width: 100px;
+    float: left;
+  }
+  p{
+    line-height: 42px;
+    margin-left: 20px;
+  }
+}
+
+.photoinfo{
+  margin-left:20px;
+  width: 90%;
+  margin-top: 30px;
+  p{
+    font-weight:100;
+    font-size:12px;
+  }
 }

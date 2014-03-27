@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140324233158) do
+ActiveRecord::Schema.define(version: 20140325031547) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +46,9 @@ ActiveRecord::Schema.define(version: 20140324233158) do
     t.string   "twitter"
     t.string   "instagram"
     t.string   "pinterest"
+    t.string   "twittertoken"
+    t.string   "instagramtoken"
+    t.string   "twittersecret"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

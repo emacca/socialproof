@@ -11,3 +11,9 @@
  *= require_self
  *= require_tree .
  */
+
+
+body#application{
+  background:image-url('social-media-strategy-image.jpg');
+  background-size: cover;
+}

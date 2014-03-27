@@ -1,3 +1,4 @@
+require "instagram"
 class UsersController < ApplicationController
 
   def sociallinks
@@ -15,6 +16,30 @@ class UsersController < ApplicationController
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end  
+  end
+
+  def set_twitter_token
+    @user = current_user
+    auth_hash = request.env['omniauth.auth']
+    accesstoken = auth_hash["credentials"]["token"]
+    accesssecret = auth_hash["credentials"]["secret"]
+    @user.twittertoken = accesstoken
+    @user.twittersecret = accesssecret
+    @user.save
+    # render :json => auth_hash
+    # raise auth_hash.inspect
+    redirect_to root_path
+  end
+
+  def set_instagram_token
+    @user = current_user
+    auth_hash = request.env['omniauth.auth']
+    instatoken = auth_hash["credentials"]["token"]
+    @user.instagramtoken = instatoken
+    @user.save
+    # raise auth_hash.inspect
+    redirect_to root_path
+    # render :json => auth_hash
   end
 
 

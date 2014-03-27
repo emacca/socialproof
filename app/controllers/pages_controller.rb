@@ -6,6 +6,7 @@ class PagesController < ApplicationController
 
 
   def index
+    @user = current_user
     # @data = @client.user_timeline(current_user.twitter)
   end
 

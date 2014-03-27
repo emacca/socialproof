@@ -12,8 +12,8 @@ class PagesController < ApplicationController
 
   def tweets
     client = Twitter::REST::Client.new do |config|
-      config.consumer_key = "bOwOoiqzjlE56CtThcYQ"
-      config.consumer_secret = "1pd0CmGWsSZzxnidBgTjVmg5yUn7CwGBAyaYJnDdik"
+      config.consumer_key = ENV["TWEET_APP_KEY"]
+      config.consumer_secret = ENV["TWEET_APP_SECRET"]
       config.access_token = current_user.twittertoken
       config.access_token_secret = current_user.twittersecret
     end

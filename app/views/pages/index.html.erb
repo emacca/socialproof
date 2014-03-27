@@ -6,8 +6,7 @@
         <h3>Menu</h3>
         <ul>
           <li><a><%= @user.email%></a></li>
-          <li><a href="/auth/twitter" class="twitter">Authorise Twitter</a></li>
-          <li><a href="/auth/instagram" class="instagram">Authorise Instagram</a></li>
+          <li><a href="/" class="twitter">Authorise Accounts</a></li>
           <li><% if user_signed_in? %>
             <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
             <% end %></li>
@@ -47,7 +46,7 @@
 <script type="text/template" id="gram-template">
   <article class="instaone">
     <div class="instaleft">
-      <a href="<%%= link %>"><img src="<%%= image %>"></a>
+      <a href="<%%= link %>" target="_blank"><img src="<%%= image %>"></a>
     </div>
     <div class="instaright">
       <div class="userinfo">
@@ -57,7 +56,6 @@
       <div class="photoinfo">
         <p><%%= likecount %></p>
         <p><%%= caption %></p>
-        <p><%%= tags %></p>
       </div>
     </div>
   </article>
@@ -69,9 +67,9 @@
       <img src="<%%= uprofileimage %>">
     </div>
     <div class="righttweet">
-      <p><a href="<%%= uurl %>"><%%= uname %></a>
-      <a href="http://twitter.com/<%%= sname %>"><span class="tweethandle">@<%%= sname%><span></a></p>
-      <p><%%= tweet %><a href="<%%= tweetlink %>"><%%= tweetlink %></a></p> 
+      <p><a href="<%%= uurl %>" target="_blank"><%%= uname %></a>
+      <a href="http://twitter.com/<%%= sname %>" target="_blank"><span class="tweethandle">@<%%= sname%><span></a></p>
+      <p><%%= tweet %><a href="<%%= tweetlink %>" target="_blank"><%%= tweetlink %></a></p> 
     </div>
   </div>
 </script>
@@ -112,7 +110,7 @@ $('.gramsfeed').on('click', function(e){
     var gramTemplate = $('#gram-template').html();
     var $instagramBox = $('.instagram-box');
     $(dataArray).each (function(){
-      var html = _.template(gramTemplate, {image: this.images.low_resolution.url, link: this.link, likecount: this.likes.count.length > 0 ? this.likes.count : '', username: this.user.username, caption: this.caption ? this.caption.text : '', tags: this.tags.length > 0 ? this.tags : '', userprofilepic: this.user.profile_picture});
+      var html = _.template(gramTemplate, {image: this.images.low_resolution.url, link: this.link, likecount: this.likes.count.length > 0 ? this.likes.count : '', username: this.user.username, caption: this.caption ? this.caption.text : '', userprofilepic: this.user.profile_picture});
       $instagramBox.append(html);
     });
 

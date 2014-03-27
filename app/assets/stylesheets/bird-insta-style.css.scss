@@ -1,0 +1,329 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.padding {
+  height: 20%;
+  /*padding-top: 5%;*/
+  
+}
+
+#twitter {
+  width: 100%;
+  height: 50%;
+/*  background:image-url('http://cdn.twitrcovers.com/wp-content/uploads/2012/11/Bubbles-Bokeh-s.jpg');
+  background-size:cover;*/
+  background-color: #33ccff;
+  background: radial-gradient(ellipse at center, #b0e4ff 0%, #00a8ff 80%);
+}
+
+#bird {
+  margin: 0 auto;
+  background: image-url('twitter-white-lg.svg');
+  /*background: url('../images/twitter-white-lg.svg');*/
+  /*-moz-background-image: url('../images/twitter-white-lg.svg');*/
+  width: 20%;
+  height: 80%;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  display: block;
+  vertical-align: middle;
+  -webkit-filter: drop-shadow(0px 0px 6px rgba(0,0,0,0.2));
+  filter: url(#drop-shadow);
+  -moz-filter: drop-shadow(0px 0px 6px rgba(0,0,0,0.2));
+  filter: url(#drop-shadow);
+  -o-filter: drop-shadow(0px 0px 6px rgba(0,0,0,0.2));
+  filter: url(#drop-shadow);
+
+  position: relative;
+  z-index: 0;
+
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+
+}
+
+/*spinning of the bird*/
+.tweet {
+  -webkit-animation: spin 1.5s linear ; 
+  -moz-animation:    spin 1.5s linear ; 
+  -o-animation:      spin 1.5s linear ; 
+  animation:         spin 1.5s linear ; 
+}
+
+
+
+@-moz-keyframes spin { 
+  30% { -webkit-transform: rotate(-13deg); }
+  80% { -webkit-transform: rotate(-13deg); }  
+  100% { -webkit-transform: rotate(0deg); }
+}
+@-webkit-keyframes spin { 
+  30% { -webkit-transform: rotate(-13deg); } 
+  80% { -webkit-transform: rotate(-13deg); } 
+  100% { -webkit-transform: rotate(0deg); }
+}
+@keyframes spin { 
+  30% { -webkit-transform: rotate(-13deg); } 
+  80% { -webkit-transform: rotate(-13deg); } 
+  100% { -webkit-transform: rotate(0deg); }
+}
+
+#note1 {
+  height: 10%;
+  width: 2%;
+  position: relative;
+  display: block;
+  bottom: 70%;
+  left: 54%;
+  z-index: 3;
+}
+
+#note2 {
+  height: 10%;
+  width: 2%;
+  position: relative;
+  display: block;
+  bottom: 68%;
+  left: 52%;
+  z-index: 2;
+}
+
+
+#instagram {
+  width: 100%;
+  height: 50%;
+  background:image-url('citylights.jpg');
+  background-size:cover;
+  background-position: center center;
+  /*background-color: #47779f;
+  background: radial-gradient(ellipse at center, #3c7aa7 0%, #155378 80%);*/
+}
+
+.flash {
+  /*display: none;*/
+  height: 100%;
+  width: 100%;
+  display:block;
+  background-color: white;
+  z-index: 1;
+  position: absolute;
+}
+
+
+#insta {
+  margin: 0 auto;
+  background:image-url('instagram-icon-white-sm.svg');
+/*  background-image: url('../images/instagram-icon-white-sm.svg');
+*/  
+  width: 20%;
+  height: 80%;
+  background-repeat: no-repeat;
+  /*height: 350px;*/
+  background-size: 100%;
+  display: block;
+  -webkit-filter: drop-shadow(0px 0px 6px rgba(0,0,0,0.4));
+  filter: url(#drop-shadow);
+  position: relative;
+  z-index: 0;
+
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.hide {
+  display: none;
+}
+
+.feed {
+   z-index: 100;
+   position: relative;
+   bottom: 50%; /*to 93%*/
+   left: 50%; /*to 23%*/
+   /*display: block;*/
+   width: 1%;
+   height: 1%;
+   margin: 0px;
+   padding: 0;
+   border: 1px solid rgba(0,0,0,0.5);
+   border-radius: 10px;
+   background: rgba(0,0,0,0.25);
+   box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.3), inset 0 10px rgba(255,255,255,0.2), inset 0 10px 20px rgba(255,255,255,0.25), inset 0 -15px 30px rgba(0,0,0,0.3);
+   -o-box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.3), inset 0 10px rgba(255,255,255,0.2), inset 0 10px 20px rgba(255,255,255,0.25), inset 0 -15px 30px rgba(0,0,0,0.3);
+   -webkit-box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.3), inset 0 10px rgba(255,255,255,0.2), inset 0 10px 20px rgba(255,255,255,0.25), inset 0 -15px 30px rgba(0,0,0,0.3);
+   -moz-box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 1px rgba(255,255,255,0.3), inset 0 10px rgba(255,255,255,0.2), inset 0 10px 20px rgba(255,255,255,0.25), inset 0 -15px 30px rgba(0,0,0,0.3);
+}
+
+.feed2 {
+   z-index: 100;
+  position: relative;
+  bottom: 50%;
+  left: 50%;
+  /* display: block; */
+  width: 1%;
+  height: 1%;
+  margin: 0px;
+  padding: 0;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 1px rgba(255, 255, 255, 0.3), inset 0 10px rgba(255, 255, 255, 0.2), inset 0 10px 20px rgba(255, 255, 255, 0.25), inset 0 -15px 30px rgba(0, 0, 0, 0.3);
+  -o-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 1px rgba(255, 255, 255, 0.3), inset 0 10px rgba(255, 255, 255, 0.2), inset 0 10px 20px rgba(255, 255, 255, 0.25), inset 0 -15px 30px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 1px rgba(255, 255, 255, 0.3), inset 0 10px rgba(255, 255, 255, 0.2), inset 0 10px 20px rgba(255, 255, 255, 0.25), inset 0 -15px 30px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5), inset 0 1px rgba(255, 255, 255, 0.3), inset 0 10px rgba(255, 255, 255, 0.2), inset 0 10px 20px rgba(255, 255, 255, 0.25), inset 0 -15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.body {
+  width: 96%;
+  height: 93%;
+  background-color: rgba(255,255,255,1);
+  position: relative;
+  top: 4%;
+  left: 2%;
+  border-radius: 10px;
+}
+
+.gram{
+  background:#e0e1e2 url("http://d36xtkk24g8jdx.cloudfront.net/bluebar/31f355e/images/shared/noise-2.png");
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes slideOutLeft {
+  0% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+
+  100% {
+    /*opacity: 0;*/
+    -webkit-transform: translateX(-200%);
+    transform: translateX(-200%);
+  }
+}
+
+@keyframes slideOutLeft {
+  0% {
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+  }
+
+  100% {
+    /*opacity: 0;*/
+    -webkit-transform: translateX(-200%);
+    -ms-transform: translateX(-200%);
+    transform: translateX(-200%);
+  }
+}
+
+.slideOutLeft {
+  -webkit-animation-name: slideOutLeft;
+  animation-name: slideOutLeft;
+  -webkit-animation-duration: .4s;
+  -moz-animation-duration: .4s;
+  -o-animation-duration: .4s;
+  -vendor-animation-duration: .4s;
+}
+
+@-webkit-keyframes wobble {
+  0% {
+    -webkit-transform: translateX(-200%);
+    transform: translateX(-200%);
+  }
+
+  15% {
+    -webkit-transform: translateX(-190%);
+    transform: translateX(-190%);
+  }
+
+  30% {
+    -webkit-transform: translateX(-205%);
+    transform: translateX(-205%);
+  }
+
+  45% {
+    -webkit-transform: translateX(-195%);
+    transform: translateX(-195%);
+  }
+
+  60% {
+    -webkit-transform: translateX(-205%);
+    transform: translateX(-205%);
+  }
+
+  75% {
+    -webkit-transform: translateX(-190%);
+    transform: translateX(-190%);
+  }
+
+  100% {
+    -webkit-transform: translateX(-195%);
+    transform: translateX(-195%);
+  }
+}
+
+@keyframes wobble {
+  0% {
+    -webkit-transform: translateX(-195%);
+    -ms-transform: translateX(-195%);
+    transform: translateX(-195%);
+  }
+
+  15% {
+    -webkit-transform: translateX(-185%) rotate(-5deg);
+    -ms-transform: translateX(-185%) rotate(-5deg);
+    transform: translateX(-185%) rotate(-5deg);
+  }
+
+  30% {
+    -webkit-transform: translateX(-200%) rotate(3deg);
+    -ms-transform: translateX(-200%) rotate(3deg);
+    transform: translateX(-200%) rotate(3deg);
+  }
+
+  45% {
+    -webkit-transform: translateX(-195%) rotate(-3deg);
+    -ms-transform: translateX(-195%) rotate(-3deg);
+    transform: translateX(-195%) rotate(-3deg);
+  }
+
+  60% {
+    -webkit-transform: translateX(-200%) rotate(2deg);
+    -ms-transform: translateX(-200%) rotate(2deg);
+    transform: translateX(-200%) rotate(2deg);
+  }
+
+  75% {
+    -webkit-transform: translateX(-190%) rotate(-1deg);
+    -ms-transform: translateX(-190%) rotate(-1deg);
+    transform: translateX(-190%) rotate(-1deg);
+  }
+
+  100% {
+    -webkit-transform: translateX(-195%);
+    -ms-transform: translateX(-195%);
+    transform: translateX(-195%);
+  }
+}
+
+.wobble {
+  -webkit-animation-name: wobble;
+  animation-name: wobble;
+  -webkit-animation-duration: .6s;
+  -moz-animation-duration: .6s;
+  -o-animation-duration: .6s;
+  -vendor-animation-duration: .6s;
+}
+
+
+

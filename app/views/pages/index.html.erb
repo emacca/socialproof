@@ -15,36 +15,53 @@
         </li>
       </ul>
     </div>
-  <script>
-  $(document).ready(function(){
-  $("#accordian h3").click(function(){
-    //slide up all the link lists
-    $("#accordian ul ul").slideUp();
-    //slide down the link list below the h3 clicked - only if its closed
-    if(!$(this).next().is(":visible"))
-    {
-      $(this).next().slideDown();
-    }
-  })
-})
-  </script>
-  <nav>
+
+<!--   <nav>
     <a href="#" class="twitterfeed">TweetFeed</a>
     <a href="#" class="gramsfeed">InstagramFeed</a>
-  </nav>
+  </nav> -->
 
-  <article class="twitter-box">
+  <article id="twitter">
+    <div class="padding"></div>
+    <a href="#" id="bird" class="twitterfeed">tweet</a>
+    <%= image_tag 'note1.svg', :id => "note1", :class=> "hide" %>
+    <%= image_tag 'note2.svg', :id => "note2", :class=> "hide" %>
+    <aside class="feed hide">
+      <div class="body twit">
+        <article class="twitter-box"></article>
+      </div>
+    </aside>
+  </article>
+
+  <!-- <article class="twitter-box">
     <h2>tweetfeed</h2>
 
   </article>
+
+
+
 
   <article class="instagram-box">
     <h2>gramfeed</h2>
 
     
+  </article> -->
+
+  <article id="instagram">
+     <div id="white"></div> 
+      <div class="padding"></div>
+      <a href="#" id="insta" class="gramsfeed">insta</a>
+      <aside class="feed2 hide">
+        <div class="body gram">
+          <article class="instagram-box"></article>
+        </div>
+      </aside>
   </article>
 
 </section>
+
+
+<% content_for :js do %>
 
 <script type="text/template" id="gram-template">
   <article class="instaone">
@@ -66,20 +83,21 @@
 </script>
 
 <script type="text/template" id="tweet-template">
-<div class="single-tweet">
-<div class="lefttweet">
-<img src="<%%= uprofileimage %>">
-</div>
-<div class="righttweet">
-<p><a href="<%%= uurl %>"><%%= uname %></a>
-<a href="http://twitter.com/<%%= sname %>"><span class="tweethandle">@<%%= sname%><span></a></p>
-<p><%%= tweet %><a href="<%%= tweetlink %>"><%%= tweetlink %></a></p> 
-</div>
-</div>
+  <div class="single-tweet">
+    <div class="lefttweet">
+      <img src="<%%= uprofileimage %>">
+    </div>
+    <div class="righttweet">
+      <p><a href="<%%= uurl %>"><%%= uname %></a>
+      <a href="http://twitter.com/<%%= sname %>"><span class="tweethandle">@<%%= sname%><span></a></p>
+      <p><%%= tweet %><a href="<%%= tweetlink %>"><%%= tweetlink %></a></p> 
+    </div>
+  </div>
 </script>
 
 
 <script>
+
 $('.twitterfeed').on('click', function(e){
   e.preventDefault();
   $.ajax({
@@ -93,6 +111,7 @@ $('.twitterfeed').on('click', function(e){
     $(tweetList).each(function(){
       var html = _.template(tweetTemplate, {tweet: this.text, tweetlink: this.entities.urls.length > 0 ? this.entities.urls[0].url : '', uname: this.user.name, uurl: this.user.url, uprofileimage: this.user.profile_image_url, sname: this.user.screen_name});
       $twitterBox.append(html);
+      console.log("worked");
     })
   })
 })
@@ -117,5 +136,19 @@ $('.gramsfeed').on('click', function(e){
 
   })
 })
+
+  $(document).ready(function(){
+  $("#accordian h3").click(function(){
+    //slide up all the link lists
+    $("#accordian ul ul").slideUp();
+    //slide down the link list below the h3 clicked - only if its closed
+    if(!$(this).next().is(":visible"))
+    {
+      $(this).next().slideDown();
+    }
+  })
+})
+
 </script>
+<% end %>
 

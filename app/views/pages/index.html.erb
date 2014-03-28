@@ -24,8 +24,8 @@
     <%= image_tag 'note2.svg', :id => "note2", :class=> "hide" %>
     <aside class="feed hide">
       <div class="body twit">
-        <div class="loader-container">
-          <div class="loader2"></div>
+        <div class="loader-container1">
+          <div class="loader1"></div>
         </div>
         <article class="twitter-box"></article>
       </div>
@@ -100,15 +100,15 @@
       type: 'get'
     });
 
-    $('.loader-container').hide();
-    var reloading = false;
+    $('.loader-container1').hide();
+    var reloading1 = false;
     if (this.id === "refreshing2"){
       spinnert();
-      reloading = true;
+      reloading1 = true;
     };
 
     tweetresult.done(function(data2){
-      if (reloading ===  true){spinnerofft()};
+      if (reloading1 ===  true){spinnerofft()};
       var tweetList = data2;
       var tweetTemplate = $('#tweet-template').html();
       var $twitterBox = $('.twitter-box');
@@ -123,14 +123,14 @@
   var spinnert = function(){
     $('.refresh').on('click', function(e) {
       e.preventDefault();
-      $('.loader-container').show();
-      $('.loader2').show();
+      $('.loader-container1').show();
+      $('.loader1').show();
     });
   }
 
   var spinnerofft = function(){
-    $('.loader-container').hide();
-      $('.loader2').hide();
+    $('.loader-container1').hide();
+      $('.loader1').hide();
   }
 
 //instagram

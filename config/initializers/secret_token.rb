@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Socialproof::Application.config.secret_key_base = '3a4b9249332798c6dbca4ee13b0c00af18f36062f68cf799cfa20f755fb86f8b55c79920ce696938b53dfdfb92b358a6314e9957a370f49691a771fb3e84cee5'
+Socialproof::Application.config.secret_key_base = ENV['RAILS_SECRET_KEY_BASE']

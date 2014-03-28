@@ -158,9 +158,12 @@
       var $instagramBox = $('.instagram-box');
       $instagramBox.html("");
       $(dataArray).each (function(){
-      // var caption2 = this.caption ? this.caption.text : '';
-      // var caplength = $.trim(capiton2).substring(0, 10).split(" ").slice(0, -1).join(" ") + "...";
-      var html = _.template(gramTemplate, {image: this.images.low_resolution.url, link: this.link, likecount: this.likes.count.length > 0 ? this.likes.count : '', username: this.user.username, caption: this.caption ? this.caption.text : '', userprofilepic: this.user.profile_picture});
+
+      var length = 230;
+      var myString = this.caption.text;
+      var myTruncatedString = myString.substring(0,length) + " ...";
+
+      var html = _.template(gramTemplate, {image: this.images.low_resolution.url, link: this.link, likecount: this.likes.count.length > 0 ? this.likes.count : '', username: this.user.username, caption: myTruncatedString ? myTruncatedString : '', userprofilepic: this.user.profile_picture});
       $instagramBox.append(html);
       console.log("worked insta");
     });

@@ -9,19 +9,71 @@
 //   background-size: cover;
 //   padding-top:100px;
 // }
-form {
-    margin-left: auto;
-    margin-right: auto;
-    width: 250px;
-    min-height: 333px;
+.welcome {
+    position: absolute;
+    left: 10%;
+    top: 14%;
+    width:44%;
+    height: 48%;
     padding: 30px;
-    margin-top: 10%;
     border: 9px solid rgba(255, 255, 255, 1);
     -moz-border-radius: 5px;
     -moz-background-clip: padding;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
-    background: rgba(255, 255, 255, .7);
+    background: rgba(255, 255, 255, .8);
+    -moz-box-shadow: 0 0 13px 3px rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 0 13px 3px rgba(255, 255, 255, 0.19);
+    box-shadow: 0 0 13px 3px rgba(255, 255, 255, 0.19);
+    overflow: hidden;
+}
+
+.welcome h1 {
+    background: image-url('heavy-logo.svg');
+    position: relative;
+    top: -3%;
+    left: -2%;
+    width: 64%;
+    height: 18%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: .3em;
+}
+
+.welcome h2 {
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: .5em;
+    font-size: 2.2em;
+}
+
+.welcome p {
+    -webkit-margin-before: .6em;
+    -webkit-margin-after: .6em;
+    font-size: 16px;
+    line-height: 1.5em;
+}
+
+form {
+    // margin-left: auto;
+    // margin-right: auto;
+    position: absolute;
+    left: 62%;
+    top: 14%;
+    width: 250px;
+    height: 48%;
+    padding: 30px;
+    // margin-top: 10%;
+    border: 9px solid rgba(255, 255, 255, 1);
+    -moz-border-radius: 5px;
+    -moz-background-clip: padding;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    background: rgba(255, 255, 255, .8);
     -moz-box-shadow: 0 0 13px 3px rgba(0, 0, 0, 0.19);
     -webkit-box-shadow: 0 0 13px 3px rgba(255, 255, 255, 0.19);
     box-shadow: 0 0 13px 3px rgba(255, 255, 255, 0.19);
@@ -88,18 +140,21 @@ input:focus, textarea:focus {
     }
 }
 .linksdevise{
-    margin-left: auto;
-    margin-right: auto;
+    position: absolute;
+    left: 62%;
+    top: 73%;
+    // margin-left: auto;
+    // margin-right: auto;
     width: 250px;
     min-height: 50px;
     padding: 30px;
-    margin-top: 20px;
+    margin-top: 2%;
     border: 9px solid rgba(255, 255, 255, 1);
     -moz-border-radius: 5px;
     -moz-background-clip: padding;
     -webkit-background-clip: padding-box;
     background-clip: padding-box;
-    background: rgba(255, 255, 255, .7);
+    background: rgba(255, 255, 255, .8);
     -moz-box-shadow: 0 0 13px 3px rgba(0, 0, 0, 0.19);
     -webkit-box-shadow: 0 0 13px 3px rgba(255, 255, 255, 0.19);
     box-shadow: 0 0 13px 3px rgba(255, 255, 255, 0.19);
